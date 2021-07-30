@@ -97,6 +97,32 @@ function userPrompts() {
     alert("Your password needs to be in between 8 and 128 characters.");
     return null;
   }
+
+  //confirm methods methods if user wants specific characters
+  var confirmLower = confirm(
+    "Do you want lower case characters in your password?"
+  );
+  var confirmUpper = confirm(
+    "Do you want upper case characters in your password?"
+  );
+  var confirmNumeric = confirm(
+    "Do you want numeric case characters in your password?"
+  );
+  var confirmSpecChar = confirm(
+    "Do you want special characters case characters in your password?"
+  );
+
+  // if statement to validate that user chooses one
+
+  if (
+    confirmLower === false &&
+    confirmUpper === false &&
+    confirmNumeric === false &&
+    confirmSpecChar
+  ) {
+    alert("You must select at least one character.");
+    return null;
+  }
 }
 
 // Assignment Code
