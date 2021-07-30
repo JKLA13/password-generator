@@ -123,6 +123,16 @@ function userPrompts() {
     alert("You must select at least one character.");
     return null;
   }
+
+  //object to store input
+  var pwInput = {
+    length: pwLength,
+    lowerCase: confirmLower,
+    upperCase: confirmUpper,
+    numeric: confirmNumeric,
+    specChar: confirmSpecChar,
+  };
+  return pwInput;
 }
 
 // Assignment Code
