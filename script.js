@@ -118,7 +118,7 @@ function userPrompts() {
     confirmLower === false &&
     confirmUpper === false &&
     confirmNumeric === false &&
-    confirmSpecChar
+    confirmSpecChar === false
   ) {
     alert("You must select at least one character.");
     return null;
@@ -133,6 +133,12 @@ function userPrompts() {
     specChar: confirmSpecChar,
   };
   return pwInput;
+}
+
+// make a function to generate pw
+
+function generatePassword() {
+  var promptInput = userPrompts();
 }
 
 // Assignment Code
