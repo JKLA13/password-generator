@@ -98,7 +98,7 @@ function userPrompts() {
     return null;
   }
 
-  //confirm methods methods if user wants specific characters
+  //confirm methods - confirm if user wants specific characters
   var confirmLower = confirm(
     "Do you want lower case characters in your password?"
   );
@@ -124,14 +124,27 @@ function userPrompts() {
     return null;
   }
 
-  //object to store input
+  //object to store user input -
   var pwInput = {
-    length: pwLength,
-    lowerCase: confirmLower,
-    upperCase: confirmUpper,
-    numeric: confirmNumeric,
-    specChar: confirmSpecChar,
+    promptLength: pwLength,
   };
+
+  if (confirmLower === true) {
+    pwInput["lowerCase"] = confirmLower;
+  }
+
+  if (confirmUpper === true) {
+    pwInput["upperCase"] = confirmUpper;
+  }
+
+  if (confirmNumeric === true) {
+    pwInput["numeric"] = confirmNumeric;
+  }
+
+  if (confirmSpecChar === true) {
+    pwInput["specChar"] = confirmSpecChar;
+  }
+
   return pwInput;
 }
 
@@ -139,6 +152,41 @@ function userPrompts() {
 
 function generatePassword() {
   var promptInput = userPrompts();
+
+  // create conditionals
+  let password = [];
+
+  for (var i = 0; i < promptInput.promptLength; i++) {
+    var arrayIndex = Math.floor(
+      Math.random() * (Object.keys(promptInput).length - 1) + 1
+    );
+
+    var selectedArray = Object.keys(promptInput)[arrayIndex];
+
+    if (selectedArray == "lowerCase") {
+      password.push(
+        lowerCaseArr[Math.floor(Math.random() * lowerCaseArr.length)]
+      );
+    }
+
+    if (selectedArray == "upperCase") {
+      password.push(
+        upperCaseArr[Math.floor(Math.random() * upperCaseArr.length)]
+      );
+    }
+
+    if (selectedArray == "numeric") {
+      password.push(numericArr[Math.floor(Math.random() * numericArr.length)]);
+    }
+
+    if (selectedArray == "specChar") {
+      password.push(
+        specialCharArr[Math.floor(Math.random() * specialCharArr.length)]
+      );
+    }
+  }
+
+  return password.join("");
 }
 
 // Assignment Code
